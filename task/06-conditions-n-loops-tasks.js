@@ -30,7 +30,11 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    let result = "";
+    if (num % 3 === 0) result += "Fizz";
+    if (num % 5 === 0) result += "Buzz";
+    if (result === "") result = num;
+    return result;
 }
 
 
@@ -46,7 +50,12 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    let result = 1;
+    for (let a = 2; a <= n; a++)
+        result *= a;
+    return result;
+    
+    //5 ! = 1 * 2 * 3 * 4 * 5 = 120.
 }
 
 
@@ -63,7 +72,12 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    var a = n1, b = n1;
+    for (var i = 0; i < (n2-n1); i++){
+        b += a + 1;
+        a++;
+    }
+    return b
 }
 
 
@@ -82,7 +96,9 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+    let max = Math.max(a, b, c),
+        sum = a + b + c - max;
+    return max < sum;
 }
 
 
@@ -120,6 +136,13 @@ function isTriangle(a,b,c) {
  */
 function doRectanglesOverlap(rect1, rect2) {
     throw new Error('Not implemented');
+    // if (rect1.top > rect2.top || rect1.left > rect2.left) {
+    //     [rect1, rect2] = [rect2, rect1];
+    // }
+    // return (rect1.top <= rect2.top)
+    //     && (rect1.top + rect1.width >= rect2.top)
+    //     && (rect1.left <= rect2.left)
+    //     && (rect1.left + rect1.height >= rect2.left);
 }
 
 
@@ -150,7 +173,17 @@ function doRectanglesOverlap(rect1, rect2) {
  *   
  */
 function isInsideCircle(circle, point) {
-    throw new Error('Not implemented');
+    return Math.hypot( (point.x-circle.center.x), (point.y-circle.center.y) ) < circle.radius;
+
+    /* #2 version
+    var f = function (x, y){
+        return Math.pow(Math.abs(x - y),2);
+    };
+    return Math.sqrt(f(circle.center.x, point.x)+f(circle.center.y, point.y)) < circle.radius;*/
+
+    /* #3 version
+    return Math.sqrt(Math.pow(Math.abs(circle.center.x - point.x),2)+Math.pow(Math.abs(circle.center.y - point.y),2)) < circle.radius; */
+
 }
 
 
@@ -166,7 +199,7 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
+    return str.split('').filter(x => str.lastIndexOf(x) == str.indexOf(x))[0];
 }
 
 
